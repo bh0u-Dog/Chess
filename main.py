@@ -1,5 +1,9 @@
 import pygame
+from pygame import mixer
 pygame.init()
+
+mixer.init() 
+
 
 width = 600
 
@@ -10,8 +14,9 @@ screen = pygame.display.set_mode((width,width))
 pygame.display.set_caption('CHESS')
 
 
-fen_string = "enbkqbne/pppppppp/////PPPPPPPP/ENBKQBNE"
+# enbkqbne/pppppppp/////PPPPPPPP/ENBKQBNE
 
+fen_string = "enbkqbne/pppppppp/////PPPPPPPP/ENBKQBNE"
 
 size = int(width/rez)
 
@@ -50,8 +55,8 @@ pawns = {
 
 }
 
-color1 = 'sandybrown'
-color2 = 'peachpuff'
+color1 = 'sienna'
+color2 = 'moccasin'
 
 board = []
 
@@ -103,8 +108,7 @@ legalMoves = {
     'P' : [[0,-size]],
     'n' : [[size,2*size],[-size,2*size],[2*size,size],[-2*size,size],[size,-2*size],[-size,-2*size],[2*size,-size],[-2*size,-size]],
     'N' : [[size,2*size],[-size,2*size],[2*size,size],[-2*size,size],[size,-2*size],[-size,-2*size],[2*size,-size],[-2*size,-size]],
-    'b': [],
-    'B' : []
+
 }
 
 def showingLegalmoves():
@@ -125,7 +129,10 @@ def pickingup():
 def killing(index):
     for j in range(len(pieces)):
         if index < len(pieces) and j < len(pieces):
-            if index != j and pieces[j][1] == pieces[index][1] and pieces[j][2] == pieces[index][2] and (pieces[index][3] != pieces[j][3]):
+            if index != j and pieces[j][1] == pieces[index][1] and pieces[j][2] == pieces[index][2] and (pieces[index][3] != pieces[j][3]) and pygame.mouse.get_pressed()[0] == False:
+                mixer.music.load('assets_default_capture.mp3')
+                mixer.music.set_volume(0.7)
+                mixer.music.play()
                 pieces.remove(pieces[index])
 
 def adjusting():
@@ -134,12 +141,20 @@ def adjusting():
         killing(i)
         for j in board:
             if i < len(pieces):
-                if (pieces[i][1] + int(size/2) < (j[0] + size) and pieces[i][1] + int(size/2) > j[0]) and (pieces[i][2] + int(size/2) < (j[1] + size) and pieces[i][2] + int(size/2) > j[1]) and pygame.mouse.get_pressed()[0] == False:
-                    pieces[i][1] = j[0]
-                    pieces[i][2] = j[1]
-                    pieces[i][4] = 'notPicked'
-                    canCheck = True
+                if pygame.mouse.get_pressed()[0] == False:
+                    if (pieces[i][1] + int(size/2) < (j[0] + size) and pieces[i][1] + int(size/2) > j[0]) and (pieces[i][2] + int(size/2) < (j[1] + size) and pieces[i][2] + int(size/2) > j[1]) and (pieces[i][2] != j[1] or (pieces[i][1] != j[0])):
+                        mixer.music.load("assets_default_move-self.mp3") 
+                        mixer.music.set_volume(0.7) 
+                        mixer.music.play()
+                        pieces[i][1] = j[0]
+                        pieces[i][2] = j[1]
+                        pieces[i][4] = 'notPicked'
+                        canCheck = True
 
+def debug():
+    for i in range(len(pieces)):
+        if i < len(pieces):
+              pygame.draw.circle(screen,'limegreen',(pieces[i][1] + int(size/2),pieces[i][2] + int(size/2)),3)
 
 def placing():
     for i in pieces:
@@ -151,6 +166,10 @@ def displaying_board():
 
 arranging()
 
+mixer.music.load('assets_default_game-start.mp3')
+mixer.music.set_volume(0.7)
+mixer.music.play()
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -161,6 +180,7 @@ while running:
     showingLegalmoves()
     adjusting()
     placing()
+    # debug()
     pickingup()
     dragging(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
     pygame.display.update()
