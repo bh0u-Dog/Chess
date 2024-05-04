@@ -206,7 +206,7 @@ def main():
                                         if gs.board[n][x1 - (n-y1)] == '--':
                                             moves.append([x1 - (n-y1),n])
                                         elif gs.board[n][x1 - (n-y1)][0] == 'w':
-                                            moves.append([x1 - (n-y1),l])
+                                            moves.append([x1 - (n-y1),n])
                                             break
                                         else:
                                             break
@@ -216,7 +216,7 @@ def main():
                                             if gs.board[g][x1 + (g-y1)] == '--':
                                                 moves.append([x1 + (g-y1),g])
                                             elif gs.board[g][x1 + (g-y1)][0] == 'w':
-                                                moves.append([x1 + (g-y1),l])
+                                                moves.append([x1 + (g-y1),g])
                                                 break
                                             else:
                                                 break
@@ -287,7 +287,7 @@ def main():
                                         if gs.board[n][x1 - (n-y1)] == '--':
                                             moves.append([x1 - (n-y1),n])
                                         elif gs.board[n][x1 - (n-y1)][0] == 'b':
-                                            moves.append([x1 - (n-y1),l])
+                                            moves.append([x1 - (n-y1),n])
                                             break
                                         else:
                                             break
@@ -297,7 +297,7 @@ def main():
                                             if gs.board[g][x1 + (g-y1)] == '--':
                                                 moves.append([x1 + (g-y1),g])
                                             elif gs.board[g][x1 + (g-y1)][0] == 'b':
-                                                moves.append([x1 + (g-y1),l])
+                                                moves.append([x1 + (g-y1),g])
                                                 break
                                             else:
                                                 break
@@ -342,7 +342,7 @@ def main():
                                             if gs.board[g][x1 + (g-y1)] == '--':
                                                 moves.append([x1 + (g-y1),g])
                                             elif gs.board[g][x1 + (g-y1)][0] == 'b':
-                                                moves.append([x1 + (g-y1),l])
+                                                moves.append([x1 + (g-y1),g])
                                                 break
                                             else:
                                                 break
@@ -387,7 +387,7 @@ def main():
                                             if gs.board[g][x1 + (g-y1)] == '--':
                                                 moves.append([x1 + (g-y1),g])
                                             elif gs.board[g][x1 + (g-y1)][0] == 'w':
-                                                moves.append([x1 + (g-y1),l])
+                                                moves.append([x1 + (g-y1),g])
                                                 break
                                             else:
                                                 break
@@ -665,7 +665,7 @@ def main():
                     if gs.board[n][x1 - (n-y1)] == '--':
                         moves.append([x1 - (n-y1),n])
                     elif gs.board[n][x1 - (n-y1)][0] == 'b':
-                        moves.append([x1 - (n-y1),l])
+                        moves.append([x1 - (n-y1),n])
                         break
                     else:
                         break
@@ -675,7 +675,7 @@ def main():
                         if gs.board[g][x1 + (g-y1)] == '--':
                             moves.append([x1 + (g-y1),g])
                         elif gs.board[g][x1 + (g-y1)][0] == 'b':
-                            moves.append([x1 + (g-y1),l])
+                            moves.append([x1 + (g-y1),g])
                             break
                         else:
                             break
@@ -748,7 +748,7 @@ def main():
                     if gs.board[n][x1 - (n-y1)] == '--':
                         moves.append([x1 - (n-y1),n])
                     elif gs.board[n][x1 - (n-y1)][0] == 'w':
-                        moves.append([x1 - (n-y1),l])
+                        moves.append([x1 - (n-y1),n])
                         break
                     else:
                         break
@@ -758,7 +758,7 @@ def main():
                         if gs.board[g][x1 + (g-y1)] == '--':
                             moves.append([x1 + (g-y1),g])
                         elif gs.board[g][x1 + (g-y1)][0] == 'w':
-                            moves.append([x1 + (g-y1),l])
+                            moves.append([x1 + (g-y1),g])
                             break
                         else:
                             break
@@ -895,7 +895,7 @@ def main():
                         if gs.board[g][x1 + (g-y1)] == '--':
                             moves.append([x1 + (g-y1),g])
                         elif gs.board[g][x1 + (g-y1)][0] == 'w':
-                            moves.append([x1 + (g-y1),l])
+                            moves.append([x1 + (g-y1),g])
                             break
                         else:
                             break
@@ -940,7 +940,7 @@ def main():
                         if gs.board[g][x1 + (g-y1)] == '--':
                             moves.append([x1 + (g-y1),g])
                         elif gs.board[g][x1 + (g-y1)][0] == 'b':
-                            moves.append([x1 + (g-y1),l])
+                            moves.append([x1 + (g-y1),g])
                             break
                         else:
                             break
