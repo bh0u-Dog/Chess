@@ -1,2 +1,1 @@
-This is a unfinished chess game and pls do not publish it it is personal project and i didnt mean to publish it the artists of these assets have all the copywrite of these images and i 
-dont claim them to be mine its just a school project.
+This is now a semi-finished chess game with all the legal moves in place without an alternative play between white and black and without the concept of chess.
